@@ -1,0 +1,110 @@
+package clases;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Usuario {
+
+	private String email;
+	private String contrasenya;
+	private String nombre;
+	private Date fecha_nac;
+	private float peso;
+	private int altura;
+	private int frecuencia_maxima;
+	private int frecuencia_reposo;
+	
+	public static final SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
+	
+	public Usuario(String email, String nombre) {
+		this.email = email;
+		this.nombre = nombre;
+	}
+	
+	public Usuario(String email, String contrasenya, String nombre, Date fecha_nac, float peso, int altura, int frecuencia_maxima,
+			int frecuencia_reposo) {
+		super();
+		this.email = email;
+		this.contrasenya = contrasenya;
+		this.nombre = nombre;
+		this.fecha_nac = fecha_nac;
+		this.peso = peso;
+		this.altura = altura;
+		this.frecuencia_maxima = frecuencia_maxima;
+		this.frecuencia_reposo = frecuencia_reposo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public boolean comprobarContrasenya(String contrasenya) {
+		return this.contrasenya.equals(contrasenya);
+	}
+	
+	public void setContrasenya(String contrasenya) {
+		this.contrasenya = contrasenya;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Date getFecha_nac() {
+		return fecha_nac;
+	}
+
+	public void setFecha_nac(Date fecha_nac) {
+		this.fecha_nac = fecha_nac;
+	}
+
+	public float getPeso() {
+		return peso;
+	}
+
+	public void setPeso(float peso) {
+		this.peso = peso;
+	}
+
+	public int getAltura() {
+		return altura;
+	}
+
+	public void setAltura(int altura) {
+		this.altura = altura;
+	}
+
+	public int getFrecuencia_maxima() {
+		return frecuencia_maxima;
+	}
+
+	public void setFrecuencia_maxima(int frecuencia_maxima) {
+		this.frecuencia_maxima = frecuencia_maxima;
+	}
+
+	public int getFrecuencia_reposo() {
+		return frecuencia_reposo;
+	}
+
+	public void setFrecuencia_reposo(int frecuencia_reposo) {
+		this.frecuencia_reposo = frecuencia_reposo;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [email=" + email + ", nombre=" + nombre + ", fecha_nac=" + formatoFecha.format(fecha_nac) + ", peso=" + peso
+				+ ", altura=" + altura + ", frecuencia_maxima=" + frecuencia_maxima + ", frecuencia_reposo="
+				+ frecuencia_reposo + "]";
+	}
+	
+
+	
+}
