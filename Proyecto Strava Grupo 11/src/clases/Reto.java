@@ -2,6 +2,7 @@ package clases;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 
 public class Reto {
 
@@ -11,11 +12,13 @@ public class Reto {
 	private float distancia_objetivo;
 	private int tiempo_objetivo;//en minutos
 	private String deporte;
+	private Usuario creador;
+	private HashSet<Usuario> usuariosApuntados;
 	
 	public static final SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
 	
 	public Reto(String nombre, Date fecha_inicio, Date fecha_fin, float distancia_objetivo, int tiempo_objetivo,
-			String deporte) {
+			String deporte, Usuario creador, HashSet<Usuario> apuntados) {
 		super();
 		this.nombre = nombre;
 		this.fecha_inicio = fecha_inicio;
@@ -23,6 +26,7 @@ public class Reto {
 		this.distancia_objetivo = distancia_objetivo;
 		this.tiempo_objetivo = tiempo_objetivo;
 		this.deporte = deporte;
+		this.creador = creador;
 	}
 
 	public String getNombre() {
@@ -72,13 +76,37 @@ public class Reto {
 	public void setDeporte(String deporte) {
 		this.deporte = deporte;
 	}
+	
+	public Usuario getCreador() {
+		return creador;
+	}
 
-	@Override
-	public String toString() {
-		return "Reto [nombre=" + nombre + ", fecha_inicio=" + formatoFecha.format(fecha_inicio) + ", fecha_fin=" + formatoFecha.format(fecha_fin)
-				+ ", distancia_objetivo=" + distancia_objetivo + ", tiempo_objetivo=" + tiempo_objetivo + ", deporte="
-				+ deporte + "]";
+	public void setCreador(Usuario creador) {
+		this.creador = creador;
+	}
+
+	public HashSet<Usuario> getUsuariosApuntados() {
+		return usuariosApuntados;
+	}
+
+	public void addUsuarioApuntado(Usuario usu) {
+		this.usuariosApuntados.add(usu);
 	}
 	
+	@Override
+	public String toString() {
+		return "Reto [nombre=" + nombre + ", fecha_inicio=" + fecha_inicio + ", fecha_fin=" + fecha_fin
+				+ ", distancia_objetivo=" + distancia_objetivo + ", tiempo_objetivo=" + tiempo_objetivo + ", deporte="
+				+ deporte + ", creador=" + creador + ", usuariosApuntados=" + usuariosApuntados + "]";
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this.getClass().getName().equals(obj.getClass().getName())) {
+			return ((this.nombre == ((Reto)obj).nombre)&&(this.deporte == ((Reto)obj).deporte));
+		}
+		
+		return false;
+	}
 	
 }

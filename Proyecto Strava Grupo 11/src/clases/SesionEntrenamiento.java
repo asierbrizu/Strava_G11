@@ -10,17 +10,19 @@ public class SesionEntrenamiento {
 	private float distancia;
 	private Date fecha_inicio;
 	private int duracion;//en minutos
+	private Usuario creador;
 	
 	public static final SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
 	public static final SimpleDateFormat formatoHora=new SimpleDateFormat("HH:mm:ss");
 	
-	public SesionEntrenamiento(String titulo, String deporte, float distancia, Date fecha_inicio, int duracion) {
+	public SesionEntrenamiento(String titulo, String deporte, float distancia, Date fecha_inicio, int duracion, Usuario creador) {
 		super();
 		this.titulo = titulo;
 		this.deporte = deporte;
 		this.distancia = distancia;
 		this.fecha_inicio = fecha_inicio;
 		this.duracion = duracion;
+		this.creador = creador;
 	}
 	public String getTitulo() {
 		return titulo;
@@ -52,10 +54,16 @@ public class SesionEntrenamiento {
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
+	public Usuario getCreador() {
+		return creador;
+	}
+	public void setCreador(Usuario creador) {
+		this.creador = creador;
+	}
 	@Override
 	public String toString() {
 		return "SesionEntrenamiento [titulo=" + titulo + ", deporte=" + deporte + ", distancia=" + distancia
-				+ ", fecha_inicio=" + formatoFecha.format(fecha_inicio)+", hora_inicio=" + formatoHora.format(fecha_inicio) + ", duracion=" + duracion + "]";
+				+ ", fecha_inicio=" + fecha_inicio + ", duracion=" + duracion + ", creador=" + creador + "]";
 	}
 	
 	
