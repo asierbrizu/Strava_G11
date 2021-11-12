@@ -1,9 +1,9 @@
-package dto;
+package server.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import clases.SesionEntrenamiento;
+import server.clases.SesionEntrenamiento;
 
 public class SesionAssembler {
 	
@@ -22,6 +22,10 @@ public class SesionAssembler {
 		public SesionDTO sesionToDTO(SesionEntrenamiento sesion) {
 			SesionDTO ses = new SesionDTO();		
 			ses.setTitulo(sesion.getTitulo());
+			ses.setDeporte(sesion.getDeporte());
+			ses.setDistancia(sesion.getDistancia());
+			ses.setFecha_inicio(sesion.getFecha_inicio());
+			ses.setDuracion(sesion.getDuracion());
 			return ses;
 		}
 

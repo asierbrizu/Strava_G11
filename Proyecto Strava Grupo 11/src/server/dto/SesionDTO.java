@@ -1,4 +1,4 @@
-package dto;
+package server.dto;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

@@ -1,6 +1,7 @@
-package services;
 
-import clases.Usuario;
+package server.services;
+
+import server.clases.Usuario;
 
 //TODO: Implement Singleton Pattern
 public class LoginAppService {

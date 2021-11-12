@@ -1,4 +1,4 @@
-package dto;
+package server.dto;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -8,6 +8,10 @@ public class UsuarioDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private String nombre;
+	
+	public UsuarioDTO() {
+		super();
+	}
 	
 	public UsuarioDTO(String email, String nombre) {
 		this.email = email;

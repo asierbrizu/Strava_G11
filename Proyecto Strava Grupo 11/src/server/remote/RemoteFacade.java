@@ -1,4 +1,4 @@
-package remote;
+package server.remote;
 
 import java.rmi.RemoteException;
 
@@ -6,8 +6,9 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import clases.Usuario;
-import services.LoginAppService;
+
+import server.clases.Usuario;
+import server.services.LoginAppService;
 
 public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {	
 	private static final long serialVersionUID = 1L;
