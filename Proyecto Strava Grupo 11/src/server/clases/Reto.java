@@ -29,6 +29,8 @@ public class Reto {
 		this.creador = creador;
 	}
 
+	public Reto() {}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -103,7 +105,7 @@ public class Reto {
 	@Override
 	public boolean equals(Object obj) {
 		if (this.getClass().getName().equals(obj.getClass().getName())) {
-			return ((this.nombre == ((Reto)obj).nombre)&&(this.deporte == ((Reto)obj).deporte));
+			return ((this.nombre.equals(((Reto)obj).nombre))&&(this.deporte.equals(((Reto)obj).deporte)));
 		}
 		
 		return false;

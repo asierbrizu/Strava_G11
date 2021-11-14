@@ -24,6 +24,8 @@ public class SesionEntrenamiento {
 		this.duracion = duracion;
 		this.creador = creador;
 	}
+	public SesionEntrenamiento() {}
+	
 	public String getTitulo() {
 		return titulo;
 	}
@@ -65,7 +67,12 @@ public class SesionEntrenamiento {
 		return "SesionEntrenamiento [titulo=" + titulo + ", deporte=" + deporte + ", distancia=" + distancia
 				+ ", fecha_inicio=" + fecha_inicio + ", duracion=" + duracion + ", creador=" + creador + "]";
 	}
-	
-	
-	
+	@Override
+	public boolean equals(Object obj) {
+		if (this.getClass().getName().equals(obj.getClass().getName())) {
+			return ((this.titulo.equals(((SesionEntrenamiento)obj).titulo))&&(this.deporte.equals(((SesionEntrenamiento)obj).deporte)));
+		}
+		
+		return false;
+	}	
 }

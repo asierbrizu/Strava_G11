@@ -9,7 +9,7 @@ public class SesionAssembler {
 	
 		private static SesionAssembler instance;
 
-		private SesionAssembler() { }
+		public SesionAssembler() { }
 		
 		public static SesionAssembler getInstance() {
 			if (instance == null) {

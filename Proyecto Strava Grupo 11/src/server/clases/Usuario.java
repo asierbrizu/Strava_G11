@@ -16,6 +16,8 @@ public class Usuario {
 	
 	public static final SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
 	
+	public Usuario() {}
+	
 	public Usuario(String email, String nombre) {
 		this.email = email;
 		this.nombre = nombre;
@@ -105,6 +107,13 @@ public class Usuario {
 				+ frecuencia_reposo + "]";
 	}
 	
-
+	@Override
+	public boolean equals(Object obj) {
+		if (this.getClass().getName().equals(obj.getClass().getName())) {
+			return ((this.email.equals(((Usuario)obj).email)));
+		}
+		
+		return false;
+	}
 	
 }

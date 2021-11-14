@@ -8,7 +8,7 @@ import server.clases.Usuario;
 public class UsuarioAssembler {
 	private static UsuarioAssembler instance;
 
-	private UsuarioAssembler() { }
+	public UsuarioAssembler() { }
 	
 	public static UsuarioAssembler getInstance() {
 		if (instance == null) {

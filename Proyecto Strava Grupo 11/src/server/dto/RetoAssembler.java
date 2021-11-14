@@ -8,7 +8,7 @@ import server.clases.Reto;
 public class RetoAssembler {
 	private static RetoAssembler instance;
 
-	private RetoAssembler() { }
+	public RetoAssembler() { }
 	
 	public static RetoAssembler getInstance() {
 		if (instance == null) {
