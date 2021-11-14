@@ -29,7 +29,7 @@ public class Reto {
 		this.creador = creador;
 	}
 
-	public Reto() {}
+	public Reto() {this.usuariosApuntados=new HashSet<Usuario>();}
 
 	public String getNombre() {
 		return nombre;
