@@ -8,14 +8,13 @@ public class RetoDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private String nombre;
-	private Date fecha_inicio;
-	private Date fecha_fin;
+	private String fecha_inicio;
+	private String fecha_fin;
 	private float distancia_objetivo;
 	private int tiempo_objetivo;//en minutos
 	private String deporte;
 	
-	public static final SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
-
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -24,19 +23,19 @@ public class RetoDTO implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Date getFecha_inicio() {
+	public String getFecha_inicio() {
 		return fecha_inicio;
 	}
 
-	public void setFecha_inicio(Date fecha_inicio) {
+	public void setFecha_inicio(String fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
 
-	public Date getFecha_fin() {
+	public String getFecha_fin() {
 		return fecha_fin;
 	}
 
-	public void setFecha_fin(Date fecha_fin) {
+	public void setFecha_fin(String fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
 

@@ -8,13 +8,12 @@ public class Usuario {
 	private String email;
 	private String contrasenya;
 	private String nombre;
-	private Date fecha_nac;
+	private String fecha_nac;
 	private float peso;
 	private int altura;
 	private int frecuencia_maxima;
 	private int frecuencia_reposo;
 	
-	public static final SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
 	
 	public Usuario() {}
 	
@@ -23,7 +22,7 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 	
-	public Usuario(String email, String contrasenya, String nombre, Date fecha_nac, float peso, int altura, int frecuencia_maxima,
+	public Usuario(String email, String contrasenya, String nombre, String fecha_nac, float peso, int altura, int frecuencia_maxima,
 			int frecuencia_reposo) {
 		super();
 		this.email = email;
@@ -60,11 +59,11 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public Date getFecha_nac() {
+	public String getFecha_nac() {
 		return fecha_nac;
 	}
 
-	public void setFecha_nac(Date fecha_nac) {
+	public void setFecha_nac(String fecha_nac) {
 		this.fecha_nac = fecha_nac;
 	}
 
@@ -102,7 +101,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [email=" + email + ", nombre=" + nombre + ", fecha_nac=" + formatoFecha.format(fecha_nac) + ", peso=" + peso
+		return "Usuario [email=" + email + ", nombre=" + nombre + ", fecha_nac=" + fecha_nac + ", peso=" + peso
 				+ ", altura=" + altura + ", frecuencia_maxima=" + frecuencia_maxima + ", frecuencia_reposo="
 				+ frecuencia_reposo + "]";
 	}

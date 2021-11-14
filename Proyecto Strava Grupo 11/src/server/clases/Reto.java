@@ -7,8 +7,8 @@ import java.util.HashSet;
 public class Reto {
 
 	private String nombre;
-	private Date fecha_inicio;
-	private Date fecha_fin;
+	private String fecha_inicio;
+	private String fecha_fin;
 	private float distancia_objetivo;
 	private int tiempo_objetivo;//en minutos
 	private String deporte;
@@ -17,7 +17,7 @@ public class Reto {
 	
 	public static final SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
 	
-	public Reto(String nombre, Date fecha_inicio, Date fecha_fin, float distancia_objetivo, int tiempo_objetivo,
+	public Reto(String nombre, String fecha_inicio, String fecha_fin, float distancia_objetivo, int tiempo_objetivo,
 			String deporte, Usuario creador, HashSet<Usuario> apuntados) {
 		super();
 		this.nombre = nombre;
@@ -39,19 +39,19 @@ public class Reto {
 		this.nombre = nombre;
 	}
 
-	public Date getFecha_inicio() {
+	public String getFecha_inicio() {
 		return fecha_inicio;
 	}
 
-	public void setFecha_inicio(Date fecha_inicio) {
+	public void setFecha_inicio(String fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
 
-	public Date getFecha_fin() {
+	public String getFecha_fin() {
 		return fecha_fin;
 	}
 
-	public void setFecha_fin(Date fecha_fin) {
+	public void setFecha_fin(String fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
 

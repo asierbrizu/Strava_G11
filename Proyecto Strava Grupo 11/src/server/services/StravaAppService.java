@@ -65,7 +65,7 @@ public class StravaAppService {
 		sesion1.setDistancia(25);
 		sesion1.setFecha_inicio("03:05:2020");
 		sesion1.setDuracion(45);
-		sesion1.setHoraIni(07);
+		sesion1.setHora_inicio(07);
 		sesion1.setDeporte("Atletismo");
 		
 		SesionEntrenamiento sesion2 = new SesionEntrenamiento();
@@ -73,7 +73,7 @@ public class StravaAppService {
 		sesion2.setDistancia(10);
 		sesion2.setFecha_inicio("11:10:2021");
 		sesion2.setDuracion(90);
-		sesion2.setHoraIni(16);
+		sesion2.setHora_inicio(16);
 		sesion2.setDeporte("Futbol");
 		
 		sesiones.add(sesion2);

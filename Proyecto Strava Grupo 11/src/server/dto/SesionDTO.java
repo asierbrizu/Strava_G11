@@ -10,17 +10,15 @@ public class SesionDTO implements Serializable {
 	private String titulo;
 	private String deporte;
 	private float distancia;
-	private Date fecha_inicio;
+	private String fecha_inicio;
+	private int hora_inicio;
 	private int duracion;//en minutos
-	
-	public static final SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
-	public static final SimpleDateFormat formatoHora=new SimpleDateFormat("HH:mm:ss");
 	
 	public SesionDTO() {
 		super();
 	}
 	
-	public SesionDTO(String titulo, String deporte, float distancia, Date fecha_inicio, int duracion) {
+	public SesionDTO(String titulo, String deporte, float distancia, String fecha_inicio, int duracion) {
 		super();
 		this.titulo = titulo;
 		this.deporte = deporte;
@@ -46,12 +44,20 @@ public class SesionDTO implements Serializable {
 	public void setDistancia(float distancia) {
 		this.distancia = distancia;
 	}
-	public Date getFecha_inicio() {
+	public String getFecha_inicio() {
 		return fecha_inicio;
 	}
-	public void setFecha_inicio(Date fecha_inicio) {
+	public void setFecha_inicio(String fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
+	public int getHora_inicio() {
+		return hora_inicio;
+	}
+
+	public void setHora_inicio(int hora_inicio) {
+		this.hora_inicio = hora_inicio;
+	}
+
 	public int getDuracion() {
 		return duracion;
 	}

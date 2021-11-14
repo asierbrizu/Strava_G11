@@ -25,6 +25,7 @@ public class SesionAssembler {
 			ses.setDeporte(sesion.getDeporte());
 			ses.setDistancia(sesion.getDistancia());
 			ses.setFecha_inicio(sesion.getFecha_inicio());
+			ses.setHora_inicio(sesion.getHora_inicio());
 			ses.setDuracion(sesion.getDuracion());
 			return ses;
 		}
