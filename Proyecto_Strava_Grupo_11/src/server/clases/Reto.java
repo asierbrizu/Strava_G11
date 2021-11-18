@@ -9,7 +9,7 @@ public class Reto {
 	private String nombre;
 	private String fecha_inicio;
 	private String fecha_fin;
-	private float distancia_objetivo;
+	private String distancia_objetivo;
 	private int tiempo_objetivo;//en minutos
 	private String deporte;
 	private Usuario creador;
@@ -17,7 +17,7 @@ public class Reto {
 	
 	public static final SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
 	
-	public Reto(String nombre, String fecha_inicio, String fecha_fin, float distancia_objetivo, int tiempo_objetivo,
+	public Reto(String nombre, String fecha_inicio, String fecha_fin, String distancia_objetivo, int tiempo_objetivo,
 			String deporte, Usuario creador, HashSet<Usuario> apuntados) {
 		super();
 		this.nombre = nombre;
@@ -55,11 +55,11 @@ public class Reto {
 		this.fecha_fin = fecha_fin;
 	}
 
-	public float getDistancia_objetivo() {
+	public String getDistancia_objetivo() {
 		return distancia_objetivo;
 	}
 
-	public void setDistancia_objetivo(float distancia_objetivo) {
+	public void setDistancia_objetivo(String distancia_objetivo) {
 		this.distancia_objetivo = distancia_objetivo;
 	}
 

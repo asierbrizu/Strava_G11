@@ -10,7 +10,7 @@ public class RetoDTO implements Serializable {
 	private String nombre;
 	private String fecha_inicio;
 	private String fecha_fin;
-	private float distancia_objetivo;
+	private String distancia_objetivo;
 	private int tiempo_objetivo;//en minutos
 	private String deporte;
 	
@@ -39,11 +39,11 @@ public class RetoDTO implements Serializable {
 		this.fecha_fin = fecha_fin;
 	}
 
-	public float getDistancia_objetivo() {
+	public String getDistancia_objetivo() {
 		return distancia_objetivo;
 	}
 
-	public void setDistancia_objetivo(float distancia_objetivo) {
+	public void setDistancia_objetivo(String distancia_objetivo) {
 		this.distancia_objetivo = distancia_objetivo;
 	}
 

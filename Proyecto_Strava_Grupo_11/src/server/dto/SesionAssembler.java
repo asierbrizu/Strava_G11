@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import server.clases.SesionEntrenamiento;
+import server.dto.SesionDTO;
+
 
 public class SesionAssembler {
 	

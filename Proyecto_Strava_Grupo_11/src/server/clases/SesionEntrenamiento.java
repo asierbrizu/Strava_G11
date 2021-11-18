@@ -7,14 +7,14 @@ public class SesionEntrenamiento {
 
 	private String titulo;
 	private String deporte;
-	private float distancia;
+	private String distancia;
 	private String fecha_inicio;
 	private int hora_inicio;//00-23
 	private int duracion;//en minutos
 	private Usuario creador;
 	
 	
-	public SesionEntrenamiento(String titulo, String deporte, float distancia, String fecha_inicio, int duracion, Usuario creador) {
+	public SesionEntrenamiento(String titulo, String deporte, String distancia, String fecha_inicio, int duracion, Usuario creador) {
 		super();
 		this.titulo = titulo;
 		this.deporte = deporte;
@@ -37,10 +37,10 @@ public class SesionEntrenamiento {
 	public void setDeporte(String deporte) {
 		this.deporte = deporte;
 	}
-	public float getDistancia() {
+	public String getDistancia() {
 		return distancia;
 	}
-	public void setDistancia(float distancia) {
+	public void setDistancia(String distancia) {
 		this.distancia = distancia;
 	}
 	public String getFecha_inicio() {

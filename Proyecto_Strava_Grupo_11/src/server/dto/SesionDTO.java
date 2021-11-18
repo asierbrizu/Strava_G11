@@ -1,15 +1,13 @@
 package server.dto;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class SesionDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private String titulo;
 	private String deporte;
-	private float distancia;
+	private String distancia;
 	private String fecha_inicio;
 	private int hora_inicio;
 	private int duracion;//en minutos
@@ -18,7 +16,7 @@ public class SesionDTO implements Serializable {
 		super();
 	}
 	
-	public SesionDTO(String titulo, String deporte, float distancia, String fecha_inicio, int duracion) {
+	public SesionDTO(String titulo, String deporte, String distancia, String fecha_inicio, int duracion) {
 		super();
 		this.titulo = titulo;
 		this.deporte = deporte;
@@ -38,10 +36,10 @@ public class SesionDTO implements Serializable {
 	public void setDeporte(String deporte) {
 		this.deporte = deporte;
 	}
-	public float getDistancia() {
+	public String getDistancia() {
 		return distancia;
 	}
-	public void setDistancia(float distancia) {
+	public void setDistancia(String distancia) {
 		this.distancia = distancia;
 	}
 	public String getFecha_inicio() {
