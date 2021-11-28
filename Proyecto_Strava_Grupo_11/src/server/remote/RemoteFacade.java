@@ -21,9 +21,8 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	//Data structure for manage Server State
 	private Map<Long, Usuario> serverState = new HashMap<>();
 	
-	//TODO: Remove this instances when Singleton Pattern is implemented
-	private LoginAppService loginService = new LoginAppService();
-	private StravaAppService stravaService = new StravaAppService();
+	private LoginAppService loginService = LoginAppService.getInstance();
+	private StravaAppService stravaService = StravaAppService.getInstance();
 	
 	public RemoteFacade() throws RemoteException {
 		super();		

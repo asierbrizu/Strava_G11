@@ -3,8 +3,12 @@ package server.test;
 import java.util.List;
 
 
+
 import server.dto.RetoDTO;
 import server.dto.SesionDTO;
+import server.gateway.ILoginGateway;
+import server.gateway.LoginFactory;
+import server.gateway.LoginGoogleServiceGateway;
 import server.remote.RemoteFacade;
 
 public class LocalTest {
@@ -42,9 +46,20 @@ public class LocalTest {
 			//Login
 			String sha1 = org.apache.commons.codec.digest.DigestUtils.sha1Hex("$!9PhNz,");
 			token = facade.login("thomas.e2001@gmail.com", sha1);			
-			//Logout
-			facade.logout(token);
-
+			
+	                ILoginGateway googleGateway = LoginFactory.crearLoginService("Google");
+	                System.out.println("Intento de iniciar sesion david: " + googleGateway.comprobarContrasenya("david", "zapatilla") + " debe dar true." );
+	    			System.out.println("Intento de iniciar sesion asier: " + googleGateway.comprobarContrasenya("asier", "calcetines") + " debe dar true." );
+	    			System.out.println("Intento de iniciar sesion diego: " + googleGateway.comprobarContrasenya("diego", "nada") + " debe dar false.");
+	    				           
+	    			
+	                ILoginGateway facebookGateway = LoginFactory.crearLoginService("Facebook");
+	                System.out.println("Intento de iniciar sesion herrero: " + facebookGateway.comprobarContrasenya("herrero", "pantalon") + " debe dar true." );
+	                System.out.println("Intento de iniciar sesion brizuela: " + facebookGateway.comprobarContrasenya("brizuela", "camisa") + " debe dar true." );
+	                System.out.println("Intento de iniciar sesion burzaco: " + facebookGateway.comprobarContrasenya("burzaco", "vacio") + " debe dar false." );
+	              //Logout
+	    			facade.logout(token);
+        	
 			retos = facade.getRetos(reto.getDeporte());
 			reto = retos.get(0); 			
 			System.out.println("\t- " + reto);

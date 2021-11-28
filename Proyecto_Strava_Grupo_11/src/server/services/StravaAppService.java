@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 import server.clases.Reto;
 import server.clases.SesionEntrenamiento;
 import server.clases.Usuario;
@@ -14,10 +13,9 @@ import server.dto.RetoDTO;
 import server.dto.SesionAssembler;
 import server.dto.SesionDTO;
 
-
-
-//TODO: Implement Singleton Pattern
 public class StravaAppService {
+	
+	private static StravaAppService instance;
 	
 	private List<Reto> retos = new ArrayList<>();
 	private List<SesionEntrenamiento> sesiones = new ArrayList<>();
@@ -84,6 +82,13 @@ public class StravaAppService {
 			
 	}
 	
+	public static StravaAppService getInstance() {
+		if (instance == null) {
+			instance = new StravaAppService();
+		}
+		
+		return instance;
+	}
 	
 	public ArrayList<RetoDTO> getRetos(String deporte) {
 		ArrayList<RetoDTO> arrayRetos = new ArrayList<>();

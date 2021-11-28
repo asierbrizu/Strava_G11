@@ -5,10 +5,22 @@ import server.clases.Usuario;
 import server.dto.UsuarioAssembler;
 import server.dto.UsuarioDTO;
 
-//TODO: Implement Singleton Pattern
 public class LoginAppService {
 		
 	private UsuarioAssembler assamblerUser = new UsuarioAssembler();
+	
+	//Instance for the Singleton Pattern
+		private static LoginAppService instance;
+		
+		private LoginAppService() { }
+		
+		public static LoginAppService getInstance() {
+			if (instance == null) {
+				instance = new LoginAppService();
+			}
+			
+			return instance;
+		}
 	
 	public Usuario login(String email, String password) {
 		//TODO: Get User using DAO and check 		
