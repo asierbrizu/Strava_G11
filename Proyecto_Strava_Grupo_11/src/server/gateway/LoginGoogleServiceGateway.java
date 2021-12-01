@@ -1,17 +1,17 @@
 package server.gateway;
 
 import java.rmi.Naming;
-
+import google.remote.ILoginGoogle;
 public class LoginGoogleServiceGateway implements ILoginGateway {
 
-	private ILoginGateway loginGoogleService;
+	private ILoginGoogle loginGoogleService;
 	
 	public LoginGoogleServiceGateway() {
 		try {		
 			String URL = "//127.0.0.1:1099/google";
-			this.loginGoogleService = (ILoginGateway) Naming.lookup(URL);
+			this.loginGoogleService = (ILoginGoogle) Naming.lookup(URL);
 		} catch (Exception ex) {
-			System.err.println("# Error locating remote fa�ade: " + ex);
+			System.err.println("# Error locating remote facade: " + ex);
 		}
 	}
 	

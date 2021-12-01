@@ -2,6 +2,7 @@ package server.remote;
 
 import java.rmi.RemoteException;
 
+
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,12 +30,11 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 	
 	@Override
-	public synchronized long login(String email, String password) throws RemoteException {
+	public synchronized long login(String email, String password, String metodo) throws RemoteException {
 		System.out.println(" * RemoteFacade login(): " + email + " / " + password);
 				
 		//Perform login() using LoginAppService
-		Usuario usuario = loginService.login(email, password);
-			
+		Usuario usuario = loginService.login(email, password, metodo);
 		//If login() success user is stored in the Server State
 		if (usuario != null) {
 			//If user is not logged in 
@@ -49,6 +49,9 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 			throw new RemoteException("Login fails!");
 		}
 	}
+	
+	//Funcion sincronizada de registrar usuario
+	
 	
 	@Override
 	public synchronized void logout(long token) throws RemoteException {

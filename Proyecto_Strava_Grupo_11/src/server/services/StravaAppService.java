@@ -4,7 +4,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import server.clases.Reto;
 import server.clases.SesionEntrenamiento;
 import server.clases.Usuario;
@@ -16,7 +19,8 @@ import server.dto.SesionDTO;
 public class StravaAppService {
 	
 	private static StravaAppService instance;
-	
+	public static Map<String, Usuario> usus= new HashMap<>();
+    	
 	private List<Reto> retos = new ArrayList<>();
 	private List<SesionEntrenamiento> sesiones = new ArrayList<>();
 	private SesionAssembler assemblerSesion = new SesionAssembler();
@@ -31,14 +35,38 @@ public class StravaAppService {
 		usu1.setEmail("thomas.e2001@gmail.com");
 		usu1.setNombre("Thomas");
 		usu1.setContrasenya("$!9PhNz,");
+		usus.put("thomas.e2001@gmail.com", usu1);
 		
 		Usuario usu2 = new Usuario();
 		usu2.setEmail("sample@gmail.com");
 		usu2.setNombre("buyer33");		
 		usu2.setContrasenya("hqc`}3Hb");
+		usus.put("sample@gmail.com", usu2);
+		
+		Usuario usuAsier = new Usuario();
+		usuAsier.setEmail("asier@opendeusto.es");
+		usuAsier.setNombre("Asier");
+		usuAsier.setContrasenya("calcetines");
+		usus.put("asier@opendeusto.es", usuAsier);
+		
+		Usuario usuDavid = new Usuario();
+		usuDavid.setEmail("david@opendeusto.es");
+		usuDavid.setNombre("David");		
+		usuDavid.setContrasenya("zapatilla");
+		usus.put("david@opendeusto.es", usuDavid);
+		
+		Usuario usuBrizuela = new Usuario();
+		usuBrizuela.setEmail("brizuela@opendeusto.es");
+		usuBrizuela.setNombre("Brizuela");
+		usuBrizuela.setContrasenya("camisa");
+		usus.put("brizuela@opendeusto.es", usuBrizuela);
+		
+		Usuario usuHerrero = new Usuario();
+		usuHerrero.setEmail("herrero@opendeusto.es");
+		usuHerrero.setNombre("Herrero");		
+		usuHerrero.setContrasenya("pantalon");
+		usus.put("herrero@opendeusto.es", usuHerrero);
 								
-
-
 		Reto reto1 = new Reto();
 		reto1.setNombre("Corriendo como loco");
 		reto1.setCreador(usu2);

@@ -25,9 +25,9 @@ public class LoginFacebookServiceGateway implements ILoginGateway {
 			
 			//Send request (one String) to the server
 			out.writeUTF(mensaje);			
-			System.out.println(" - Sending data to '" + socket.getInetAddress().getHostAddress() + ":" + socket.getPort() + "' -> '" );
+			System.out.println(" - Sending data to '" + socket.getInetAddress().getHostAddress() + ":" + socket.getPort() + "' -> '"+email+DELIMITER+contrasenya+"'");
 			resultado=in.readBoolean();			
-			System.out.println(" - Getting request from '" + socket.getInetAddress().getHostAddress() + ":" + socket.getPort() + "' -> '");
+			System.out.println(" - Getting request from '" + socket.getInetAddress().getHostAddress() + ":" + socket.getPort() + "' -> '"+resultado+"'");
 		} catch (Exception e) {
 			System.out.println("# Login. SocketGateway error: " + e.getMessage());	
 		} 	

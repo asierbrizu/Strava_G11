@@ -4,6 +4,8 @@ package server.services;
 import server.clases.Usuario;
 import server.dto.UsuarioAssembler;
 import server.dto.UsuarioDTO;
+import server.gateway.ILoginGateway;
+import server.gateway.LoginFactory;
 
 public class LoginAppService {
 		
@@ -22,9 +24,41 @@ public class LoginAppService {
 			return instance;
 		}
 	
-	public Usuario login(String email, String password) {
+	public Usuario login(String email, String password, String metodo) {
 		//TODO: Get User using DAO and check 		
-		Usuario usuario = new Usuario(email, password);		
+		System.out.println("Intentando iniciar sesion con "+email);
+		Usuario usuario;		
+		boolean comprobacion;
+		
+		switch (metodo) {
+		case "Google": 
+			ILoginGateway googleGateway = LoginFactory.crearLoginService("Google");
+			comprobacion = googleGateway.comprobarContrasenya(email, password);
+			break;
+		case "Facebook":
+			ILoginGateway facebookGateway = LoginFactory.crearLoginService("Facebook");
+			comprobacion = facebookGateway.comprobarContrasenya(email, password);
+			break;
+		default:
+			if (StravaAppService.usus.containsKey(email)) {
+                usuario = StravaAppService.usus.get(email);
+                comprobacion = usuario.comprobarContrasenya(password);
+            } else {
+                comprobacion = false;
+            }
+            break;
+		}
+		
+		if (comprobacion) {
+			System.out.println(email+" ha iniciado sesion con exito.");
+			usuario=StravaAppService.usus.get(email);
+			return usuario;
+		} else {
+			System.out.println("No se ha podido iniciar sesion");
+			return null;
+		}
+		
+		/*
 		//TODO: Corregir el login
 		usuario.setEmail("thomas.e2001@gmail.com");
 		usuario.setNombre("Thomas");		
@@ -37,8 +71,9 @@ public class LoginAppService {
 		} else {
 			return null;
 		}
-	}
+*/	}
 	
+	//Registrar usuario
 	
 	public UsuarioDTO getUsuario(String email, String contrasenya) {
 		Usuario usuario= new Usuario();		
