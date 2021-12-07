@@ -13,7 +13,7 @@ public class Usuario {
 	private int altura;
 	private int frecuencia_maxima;
 	private int frecuencia_reposo;
-	
+	private TipoUsuario tipoUsuario;
 	
 	public Usuario() {}
 	
@@ -23,7 +23,7 @@ public class Usuario {
 	}
 	
 	public Usuario(String email, String contrasenya, String nombre, String fecha_nac, float peso, int altura, int frecuencia_maxima,
-			int frecuencia_reposo) {
+			int frecuencia_reposo, TipoUsuario tipoUsuario) {
 		super();
 		this.email = email;
 		this.contrasenya = contrasenya;
@@ -97,6 +97,14 @@ public class Usuario {
 
 	public void setFrecuencia_reposo(int frecuencia_reposo) {
 		this.frecuencia_reposo = frecuencia_reposo;
+	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	@Override

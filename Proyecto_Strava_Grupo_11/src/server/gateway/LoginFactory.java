@@ -1,16 +1,23 @@
 package server.gateway;
 
+import server.clases.TipoUsuario;
+
 public class LoginFactory {
-	public static ILoginGateway crearLoginService(String metodo) {
-        if (metodo.equals("Google")) {
-            return new LoginGoogleServiceGateway();
-        } else if (metodo.equals("Facebook")) {
-            final String serverIP = "127.0.0.1";
+	public static LoginGateway crearLoginService(TipoUsuario metodo) {
+        switch (metodo) {
+		case GOOGLE:
+			return new LoginGoogleServiceGateway(metodo);
+		case FACEBOOK:
+			final String serverIP = "127.0.0.1";
             final int serverPort = 35600;
-            return new LoginFacebookServiceGateway(serverIP, serverPort);
-        } else {
-            return null;
-        }
+            return new LoginFacebookServiceGateway(serverIP, serverPort, metodo);			
+		default:
+			return null;
+		}
+		
+		
+		
+		
     }
 
 }

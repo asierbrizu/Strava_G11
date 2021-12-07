@@ -1,8 +1,7 @@
 package server.dto;
 
 import java.util.ArrayList;
-import java.util.List;
-
+import java.util.List;import server.clases.TipoUsuario;
 import server.clases.Usuario;
 
 public class UsuarioAssembler {
@@ -23,7 +22,7 @@ public class UsuarioAssembler {
 		
 		usu.setEmail(usuario.getEmail());
 		usu.setNombre(usuario.getNombre());
-		
+		usu.setTipoUsuario(usuario.getTipoUsuario());
 		return usu;
 	}
 	

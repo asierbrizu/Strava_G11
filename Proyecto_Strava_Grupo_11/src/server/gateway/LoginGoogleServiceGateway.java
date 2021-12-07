@@ -2,11 +2,13 @@ package server.gateway;
 
 import java.rmi.Naming;
 import google.remote.ILoginGoogle;
-public class LoginGoogleServiceGateway implements ILoginGateway {
+import server.clases.TipoUsuario;
+public class LoginGoogleServiceGateway extends LoginGateway {
 
 	private ILoginGoogle loginGoogleService;
 	
-	public LoginGoogleServiceGateway() {
+	public LoginGoogleServiceGateway(TipoUsuario metodo) {
+		super.metodo=metodo;
 		try {		
 			String URL = "//127.0.0.1:1099/google";
 			this.loginGoogleService = (ILoginGoogle) Naming.lookup(URL);

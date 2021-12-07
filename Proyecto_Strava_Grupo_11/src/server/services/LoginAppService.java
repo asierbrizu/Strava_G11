@@ -1,20 +1,30 @@
 
 package server.services;
 
+import java.util.HashMap;
+
+import server.clases.TipoUsuario;
 import server.clases.Usuario;
 import server.dto.UsuarioAssembler;
 import server.dto.UsuarioDTO;
-import server.gateway.ILoginGateway;
+import server.gateway.LoginGateway;
 import server.gateway.LoginFactory;
 
 public class LoginAppService {
 		
 	private UsuarioAssembler assamblerUser = new UsuarioAssembler();
-	
+	private HashMap<TipoUsuario, LoginGateway> gateways;
 	//Instance for the Singleton Pattern
 		private static LoginAppService instance;
 		
-		private LoginAppService() { }
+		private LoginAppService() { 
+			//Crear los gateways en ArrayList
+			gateways = new HashMap<>();
+			for (TipoUsuario tipo : TipoUsuario.values()) {
+				gateways.put(tipo, LoginFactory.crearLoginService(tipo));
+			}
+			
+		}
 		
 		public static LoginAppService getInstance() {
 			if (instance == null) {
@@ -24,20 +34,18 @@ public class LoginAppService {
 			return instance;
 		}
 	
-	public Usuario login(String email, String password, String metodo) {
+	public Usuario login(String email, String password, TipoUsuario metodo) {
 		//TODO: Get User using DAO and check 		
 		System.out.println("Intentando iniciar sesion con "+email);
 		Usuario usuario;		
 		boolean comprobacion;
 		
 		switch (metodo) {
-		case "Google": 
-			ILoginGateway googleGateway = LoginFactory.crearLoginService("Google");
-			comprobacion = googleGateway.comprobarContrasenya(email, password);
+		case GOOGLE: 
+			comprobacion = gateways.get(metodo).comprobarContrasenya(email, password);
 			break;
-		case "Facebook":
-			ILoginGateway facebookGateway = LoginFactory.crearLoginService("Facebook");
-			comprobacion = facebookGateway.comprobarContrasenya(email, password);
+		case FACEBOOK:
+			comprobacion = gateways.get(metodo).comprobarContrasenya(email, password);
 			break;
 		default:
 			if (StravaAppService.usus.containsKey(email)) {
@@ -58,20 +66,7 @@ public class LoginAppService {
 			return null;
 		}
 		
-		/*
-		//TODO: Corregir el login
-		usuario.setEmail("thomas.e2001@gmail.com");
-		usuario.setNombre("Thomas");		
-		//Generate the hash of the password
-		String sha1 = org.apache.commons.codec.digest.DigestUtils.sha1Hex("$!9PhNz,");		
-		usuario.setContrasenya(sha1);
-		
-		if (usuario.getEmail().equals(email) && usuario.comprobarContrasenya(password)) {		
-			return usuario;
-		} else {
-			return null;
 		}
-*/	}
 	
 	//Registrar usuario
 	

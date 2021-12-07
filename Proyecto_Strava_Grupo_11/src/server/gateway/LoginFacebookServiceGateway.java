@@ -4,13 +4,16 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
 
-public class LoginFacebookServiceGateway implements ILoginGateway {
+import server.clases.TipoUsuario;
+
+public class LoginFacebookServiceGateway extends LoginGateway {
 	
 	private String serverIP;
 	private int serverPort;
 	private static String DELIMITER = "#";
 	
-	public LoginFacebookServiceGateway (String servIP, int servPort) {
+	public LoginFacebookServiceGateway (String servIP, int servPort, TipoUsuario metodo) {
+		super.metodo=metodo;
 		serverIP = servIP;
 		serverPort = servPort;
 	}

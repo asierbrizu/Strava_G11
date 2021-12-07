@@ -3,9 +3,10 @@ package server.test;
 import java.util.List;
 
 import google.remote.ILoginGoogle;
+import server.clases.TipoUsuario;
 import server.dto.RetoDTO;
 import server.dto.SesionDTO;
-import server.gateway.ILoginGateway;
+import server.gateway.LoginGateway;
 import server.gateway.LoginFactory;
 import server.gateway.LoginGoogleServiceGateway;
 import server.remote.RemoteFacade;
@@ -49,13 +50,13 @@ public class LocalTest {
 		//	String sha1 = org.apache.commons.codec.digest.DigestUtils.sha1Hex("$!9PhNz,");
 		//	token = facade.login("thomas.e2001@gmail.com", sha1,"");			
 		
-			token=facade.login("david@opendeusto.es", "zapatilla", "Google");
+			token=facade.login("david@opendeusto.es", "zapatilla", TipoUsuario.GOOGLE);
 			facade.logout(token);
-			token=facade.login("asier@opendeusto.es", "calcetines", "Google");
+			token=facade.login("asier@opendeusto.es", "calcetines", TipoUsuario.GOOGLE);
 			facade.logout(token);
-			token=facade.login("herrero@opendeusto.es", "pantalon", "Facebook");
+			token=facade.login("herrero@opendeusto.es", "pantalon", TipoUsuario.FACEBOOK);
 			facade.logout(token);
-			token=facade.login("brizuela@opendeusto.es", "camisa", "Facebook");
+			token=facade.login("brizuela@opendeusto.es", "camisa", TipoUsuario.FACEBOOK);
 			facade.logout(token);
 			
 			retos = facade.getRetos(reto.getDeporte());

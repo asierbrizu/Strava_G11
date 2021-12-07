@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import server.clases.TipoUsuario;
 import server.clases.Usuario;
 import server.dto.RetoDTO;
 import server.dto.SesionDTO;
@@ -30,7 +31,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 	
 	@Override
-	public synchronized long login(String email, String password, String metodo) throws RemoteException {
+	public synchronized long login(String email, String password, TipoUsuario metodo) throws RemoteException {
 		System.out.println(" * RemoteFacade login(): " + email + " / " + password);
 				
 		//Perform login() using LoginAppService
