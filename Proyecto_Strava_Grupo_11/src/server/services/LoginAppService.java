@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import server.clases.TipoUsuario;
 import server.clases.Usuario;
+import server.dao.UsuarioDAO;
 import server.dto.UsuarioAssembler;
 import server.dto.UsuarioDTO;
 import server.gateway.LoginGateway;
@@ -35,9 +36,8 @@ public class LoginAppService {
 		}
 	
 	public Usuario login(String email, String password, TipoUsuario metodo) {
-		//TODO: Get User using DAO and check 		
 		System.out.println("Intentando iniciar sesion con "+email);
-		Usuario usuario;		
+		Usuario usuario=UsuarioDAO.getInstance().find(email);		
 		boolean comprobacion;
 		
 		switch (metodo) {
@@ -48,8 +48,7 @@ public class LoginAppService {
 			comprobacion = gateways.get(metodo).comprobarContrasenya(email, password);
 			break;
 		default:
-			if (StravaAppService.usus.containsKey(email)) {
-                usuario = StravaAppService.usus.get(email);
+			if (usuario!=null) {
                 comprobacion = usuario.comprobarContrasenya(password);
             } else {
                 comprobacion = false;
@@ -59,7 +58,6 @@ public class LoginAppService {
 		
 		if (comprobacion) {
 			System.out.println(email+" ha iniciado sesion con exito.");
-			usuario=StravaAppService.usus.get(email);
 			return usuario;
 		} else {
 			System.out.println("No se ha podido iniciar sesion");

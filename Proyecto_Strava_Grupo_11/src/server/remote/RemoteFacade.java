@@ -7,8 +7,10 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
+import server.clases.Reto;
 import server.clases.TipoUsuario;
 import server.clases.Usuario;
 import server.dto.RetoDTO;
@@ -83,5 +85,37 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		UsuarioDTO u = loginService.getUsuario(email, contrasenya);
 		return u;
 	}
+	
+	@Override
+    public void crearSesion(String titulo, String deporte, String distancia, String fecha_inicio, int duracion, long token) throws RemoteException {
+        if (this.serverState.containsKey(token)) {
+            StravaAppService.getInstance().crearSesion(titulo, deporte, distancia, fecha_inicio, duracion, this.serverState.get(token));
+            System.out.println("Creada la sesión de entrenamiento '" + titulo+ "'");
+        } else {
+            throw new RemoteException("Usuario no logeado");
+        }
+    }
+	
+    @Override
+    public void crearReto(String nombre, String fecha_inicio, String fecha_fin, String distancia_objetivo, int tiempo_objetivo, String deporte, HashSet<Usuario> apuntados, long token) throws RemoteException {
+        if (this.serverState.containsKey(token)) {
+            StravaAppService.getInstance().crearReto(nombre, fecha_inicio, fecha_fin, distancia_objetivo, tiempo_objetivo, deporte, apuntados, this.serverState.get(token));
+            System.out.println("Se ha creado el reto '" + nombre + "'");
+        } else {
+            throw new RemoteException("El usuario no esta logeado");
+        }
+    }
+
+    @Override
+    public void aceptarReto(Reto reto, long token) throws RemoteException {
+        if (this.serverState.containsKey(token)) {
+            System.out.println(" Se ha aeptado el reto " + reto);
+            StravaAppService.getInstance().aceptarReto(reto, this.serverState.get(token));
+        } else {
+            throw new RemoteException("User not logged in");
+        }
+    }
+
+    
 	
 }

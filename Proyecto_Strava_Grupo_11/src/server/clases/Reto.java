@@ -4,15 +4,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 
-public class Reto {
+import javax.jdo.annotations.Join;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
+@PersistenceCapable(detachable="true")
+public class Reto {
+	@PrimaryKey
 	private String nombre;
 	private String fecha_inicio;
 	private String fecha_fin;
 	private String distancia_objetivo;
 	private int tiempo_objetivo;//en minutos
 	private String deporte;
+	@Persistent(defaultFetchGroup="true")
 	private Usuario creador;
+	
+	//@Join
+	//@Persistent(mappedBy="usuario", dependentElement="true", defaultFetchGroup="true")
+	@Persistent(defaultFetchGroup="true")
 	private HashSet<Usuario> usuariosApuntados;
 	
 	public static final SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");

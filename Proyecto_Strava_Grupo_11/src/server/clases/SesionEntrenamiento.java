@@ -3,6 +3,10 @@ package server.clases;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+@PersistenceCapable(detachable="true")
 public class SesionEntrenamiento {
 
 	private String titulo;
@@ -11,6 +15,7 @@ public class SesionEntrenamiento {
 	private String fecha_inicio;
 	private int hora_inicio;//00-23
 	private int duracion;//en minutos
+	@Persistent(defaultFetchGroup="true")
 	private Usuario creador;
 	
 	

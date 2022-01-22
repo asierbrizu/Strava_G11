@@ -1,16 +1,21 @@
 package server.services;
 
 import java.rmi.RemoteException;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
 import server.clases.Reto;
 import server.clases.SesionEntrenamiento;
 import server.clases.Usuario;
+import server.dao.RetoDAO;
+import server.dao.SesionDAO;
+import server.dao.UsuarioDAO;
 import server.dto.RetoAssembler;
 import server.dto.RetoDTO;
 import server.dto.SesionAssembler;
@@ -19,17 +24,17 @@ import server.dto.SesionDTO;
 public class StravaAppService {
 	
 	private static StravaAppService instance;
-	public static Map<String, Usuario> usus= new HashMap<>();
+	//public static Map<String, Usuario> usus= new HashMap<>();
     	
-	private List<Reto> retos = new ArrayList<>();
-	private List<SesionEntrenamiento> sesiones = new ArrayList<>();
+	//private List<Reto> retos = new ArrayList<>();
+	//private List<SesionEntrenamiento> sesiones = new ArrayList<>();
 	private SesionAssembler assemblerSesion = new SesionAssembler();
 	private RetoAssembler assemblerReto = new RetoAssembler();
 	
 	public StravaAppService() {
-		this.inicializarDatos();
+		//	this.inicializarDatos();
 	}
-	
+	/*
 	private void inicializarDatos() {
 		Usuario usu1 = new Usuario();
 		usu1.setEmail("thomas.e2001@gmail.com");
@@ -109,7 +114,7 @@ public class StravaAppService {
 		reto2.getUsuariosApuntados().add(usu2);
 			
 	}
-	
+	*/
 	public static StravaAppService getInstance() {
 		if (instance == null) {
 			instance = new StravaAppService();
@@ -119,8 +124,9 @@ public class StravaAppService {
 	}
 	
 	public ArrayList<RetoDTO> getRetos(String deporte) {
+		ArrayList<Reto> todosRetos = (ArrayList<Reto>) RetoDAO.getInstance().getAll();
 		ArrayList<RetoDTO> arrayRetos = new ArrayList<>();
-		for (Reto r : this.retos) {
+		for (Reto r : todosRetos) {
 			if (r.getDeporte().equalsIgnoreCase(deporte)) {
 				assemblerReto.getInstance();
 				RetoDTO rto = assemblerReto.retoToDTO(r);
@@ -131,8 +137,9 @@ public class StravaAppService {
 	}
 	
 	public ArrayList<SesionDTO> getSesiones(String deporte) {
+		ArrayList<SesionEntrenamiento> todasSesiones = (ArrayList<SesionEntrenamiento>) SesionDAO.getInstance().getAll();
 		ArrayList<SesionDTO> arraySesiones= new ArrayList<>();
-		for (SesionEntrenamiento s : this.sesiones) {
+		for (SesionEntrenamiento s : todasSesiones) {
 			if (s.getDeporte().equalsIgnoreCase(deporte)) {
 				assemblerSesion.getInstance();
 				SesionDTO ses = assemblerSesion.sesionToDTO(s);
@@ -142,5 +149,25 @@ public class StravaAppService {
 		return arraySesiones;
 	}
 	
+	public void crearSesion(String titulo, String deporte, String distancia, String fecha_inicio, int duracion, Usuario creador) throws RemoteException {
+
+        SesionEntrenamiento sesion = new SesionEntrenamiento(titulo, deporte, distancia, fecha_inicio, duracion, creador);
+        Usuario u = UsuarioDAO.getInstance().find(creador.getEmail());
+        UsuarioDAO.getInstance().save(u);
+    }
+
 	
+	public void crearReto(String nombre, String fecha_inicio, String fecha_fin, String distancia_objetivo, int tiempo_objetivo, String deporte, HashSet<Usuario> apuntados, Usuario creador) throws RemoteException {
+	    Reto reto = new Reto(nombre, fecha_inicio, fecha_fin, distancia_objetivo, tiempo_objetivo, deporte, creador, apuntados);
+        RetoDAO.getInstance().save(reto);
+    }
+
+	
+    public void aceptarReto(Reto reto, Usuario usuario) {
+        Reto r= RetoDAO.getInstance().find(reto.getNombre());
+        usuario.aceptarReto(r);
+        
+    }
+
+
 }

@@ -1,8 +1,15 @@
 package server.clases;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.jdo.annotations.Join;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+@PersistenceCapable(detachable="true")
 public class Usuario {
 
 	private String email;
@@ -13,7 +20,16 @@ public class Usuario {
 	private int altura;
 	private int frecuencia_maxima;
 	private int frecuencia_reposo;
+	@Persistent(defaultFetchGroup="true")
 	private TipoUsuario tipoUsuario;
+	@Join
+    @Persistent(mappedBy = "creador", dependentElement = "true", defaultFetchGroup = "true")   // TODO
+    private List<SesionEntrenamiento> listaSesiones;
+
+    @Join
+    @Persistent(mappedBy = "participantes", dependentElement = "true", defaultFetchGroup = "true")   // TODO
+    private List<Reto> retosAceptados;
+
 	
 	public Usuario() {}
 	
@@ -33,6 +49,8 @@ public class Usuario {
 		this.altura = altura;
 		this.frecuencia_maxima = frecuencia_maxima;
 		this.frecuencia_reposo = frecuencia_reposo;
+		this.listaSesiones = new ArrayList<>();
+		this.retosAceptados = new ArrayList<>();
 	}
 
 	public String getEmail() {
@@ -107,6 +125,30 @@ public class Usuario {
 		this.tipoUsuario = tipoUsuario;
 	}
 
+	public List<SesionEntrenamiento> getListaSesiones() {
+		return listaSesiones;
+	}
+
+	public void setListaSesiones(List<SesionEntrenamiento> listaSesiones) {
+		this.listaSesiones = listaSesiones;
+	}
+
+	public List<Reto> getRetosAceptados() {
+		return retosAceptados;
+	}
+
+	public void setRetosAceptados(List<Reto> retosAceptados) {
+		this.retosAceptados = retosAceptados;
+	}
+
+	public void aceptarReto(Reto reto) {
+        this.retosAceptados.add(reto);
+    }
+	
+	public void añadirSesion(SesionEntrenamiento sesion) {
+        this.listaSesiones.add(sesion);
+    }
+	
 	@Override
 	public String toString() {
 		return "Usuario [email=" + email + ", nombre=" + nombre + ", fecha_nac=" + fecha_nac + ", peso=" + peso
