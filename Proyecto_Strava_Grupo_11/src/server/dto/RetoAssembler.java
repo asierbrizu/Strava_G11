@@ -3,7 +3,7 @@ package server.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import server.clases.Reto;
+import server.domain.Reto;
 
 public class RetoAssembler {
 	private static RetoAssembler instance;

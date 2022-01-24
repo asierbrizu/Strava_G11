@@ -1,8 +1,10 @@
 package server.dto;
 
 import java.util.ArrayList;
-import java.util.List;import server.clases.TipoUsuario;
-import server.clases.Usuario;
+import java.util.List;
+
+import server.domain.TipoUsuario;
+import server.domain.Usuario;
 
 public class UsuarioAssembler {
 	private static UsuarioAssembler instance;

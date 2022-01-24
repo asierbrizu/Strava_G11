@@ -1,6 +1,6 @@
 package server.gateway;
 
-import server.clases.TipoUsuario;
+import server.domain.TipoUsuario;
 
 public abstract class LoginGateway {
 	TipoUsuario metodo;

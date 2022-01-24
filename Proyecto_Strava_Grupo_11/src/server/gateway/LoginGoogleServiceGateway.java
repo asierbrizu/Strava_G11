@@ -2,7 +2,7 @@ package server.gateway;
 
 import java.rmi.Naming;
 import google.remote.ILoginGoogle;
-import server.clases.TipoUsuario;
+import server.domain.TipoUsuario;
 public class LoginGoogleServiceGateway extends LoginGateway {
 
 	private ILoginGoogle loginGoogleService;

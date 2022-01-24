@@ -3,7 +3,7 @@ package server.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import server.clases.SesionEntrenamiento;
+import server.domain.SesionEntrenamiento;
 import server.dto.SesionDTO;
 
 

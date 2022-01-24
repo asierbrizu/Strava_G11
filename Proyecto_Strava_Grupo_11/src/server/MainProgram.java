@@ -2,10 +2,12 @@ package server;
 
 import java.rmi.Naming;
 
-import server.clases.Reto;
-import server.clases.SesionEntrenamiento;
-import server.clases.Usuario;
+import server.dao.RetoDAO;
+import server.dao.SesionDAO;
 import server.dao.UsuarioDAO;
+import server.domain.Reto;
+import server.domain.SesionEntrenamiento;
+import server.domain.Usuario;
 import server.remote.IRemoteFacade;
 import server.remote.RemoteFacade;
 
@@ -21,13 +23,15 @@ public class MainProgram {
 		//args[1] = RMIRegistry Port
 		//args[2] = Service Name
 		String name = "//" + args[0] + ":" + args[1] + "/" + args[2];		
-		
+		System.out.println("El name es: "+name);
 		initDB();
-		
 		//Bind remote facade instance to a sirvice name using RMIRegistry
 		try {
 			IRemoteFacade remoteFacade = new RemoteFacade();			
+			System.out.println("Se va a hacer el rebind");
 			Naming.rebind(name, remoteFacade);
+			System.out.println("Se ha hecho el rebind");
+			System.out.println();
 			System.out.println(" * Servidor Strava '" + name + "' iniciado!!");
 		} catch (Exception ex) {
 			System.err.println(" # Strava Server Exception: " + ex.getMessage());
@@ -36,6 +40,7 @@ public class MainProgram {
 	}
 
 	private static void initDB() {
+		
 		Usuario usu1 = new Usuario();
 		usu1.setEmail("thomas.e2001@gmail.com");
 		usu1.setNombre("Thomas");
@@ -108,7 +113,10 @@ public class MainProgram {
 		UsuarioDAO.getInstance().save(usuBrizuela);
 		UsuarioDAO.getInstance().save(usuDavid);
 		UsuarioDAO.getInstance().save(usuHerrero);
-
+		RetoDAO.getInstance().save(reto1);
+		RetoDAO.getInstance().save(reto2);
+		SesionDAO.getInstance().save(sesion1);
+		SesionDAO.getInstance().save(sesion2);
 		
 	}
 	

@@ -8,7 +8,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-import server.clases.SesionEntrenamiento;
+import server.domain.SesionEntrenamiento;
 
 //This class implements Singleton and DAO patterns
 public class SesionDAO extends DataAccessObjectBase implements IDataAccessObject<SesionEntrenamiento> {

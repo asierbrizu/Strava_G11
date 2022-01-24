@@ -3,7 +3,7 @@ package server.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-import server.clases.TipoUsuario;
+import server.domain.TipoUsuario;
 
 public class UsuarioDTO implements Serializable {
 

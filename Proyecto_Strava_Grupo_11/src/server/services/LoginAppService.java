@@ -3,9 +3,9 @@ package server.services;
 
 import java.util.HashMap;
 
-import server.clases.TipoUsuario;
-import server.clases.Usuario;
 import server.dao.UsuarioDAO;
+import server.domain.TipoUsuario;
+import server.domain.Usuario;
 import server.dto.UsuarioAssembler;
 import server.dto.UsuarioDTO;
 import server.gateway.LoginGateway;

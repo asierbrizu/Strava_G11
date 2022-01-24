@@ -10,12 +10,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import server.clases.Reto;
-import server.clases.SesionEntrenamiento;
-import server.clases.Usuario;
 import server.dao.RetoDAO;
 import server.dao.SesionDAO;
 import server.dao.UsuarioDAO;
+import server.domain.Reto;
+import server.domain.SesionEntrenamiento;
+import server.domain.Usuario;
 import server.dto.RetoAssembler;
 import server.dto.RetoDTO;
 import server.dto.SesionAssembler;

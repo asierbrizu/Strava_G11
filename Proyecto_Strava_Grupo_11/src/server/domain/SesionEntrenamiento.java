@@ -1,4 +1,4 @@
-package server.clases;
+package server.domain;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

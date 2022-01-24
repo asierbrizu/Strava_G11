@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import server.clases.Reto;
-import server.clases.TipoUsuario;
-import server.clases.Usuario;
+import server.domain.Reto;
+import server.domain.TipoUsuario;
+import server.domain.Usuario;
 import server.dto.RetoDTO;
 import server.dto.SesionDTO;
 import server.dto.UsuarioDTO;

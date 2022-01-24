@@ -4,7 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
 
-import server.clases.TipoUsuario;
+import server.domain.TipoUsuario;
 
 public class LoginFacebookServiceGateway extends LoginGateway {
 	

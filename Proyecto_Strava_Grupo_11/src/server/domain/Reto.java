@@ -1,4 +1,4 @@
-package server.clases;
+package server.domain;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,7 +11,6 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable(detachable="true")
 public class Reto {
-	@PrimaryKey
 	private String nombre;
 	private String fecha_inicio;
 	private String fecha_fin;
@@ -21,8 +20,6 @@ public class Reto {
 	@Persistent(defaultFetchGroup="true")
 	private Usuario creador;
 	
-	//@Join
-	//@Persistent(mappedBy="usuario", dependentElement="true", defaultFetchGroup="true")
 	@Persistent(defaultFetchGroup="true")
 	private HashSet<Usuario> usuariosApuntados;
 	

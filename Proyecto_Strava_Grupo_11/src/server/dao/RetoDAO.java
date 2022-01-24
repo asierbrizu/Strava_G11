@@ -8,7 +8,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-import server.clases.Reto;
+import server.domain.Reto;
 
 //This class implements Singleton and DAO patterns
 public class RetoDAO extends DataAccessObjectBase implements IDataAccessObject<Reto> {

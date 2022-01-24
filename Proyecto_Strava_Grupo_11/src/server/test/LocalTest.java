@@ -3,11 +3,11 @@ package server.test;
 import java.util.List;
 
 import google.remote.ILoginGoogle;
-import server.clases.Reto;
-import server.clases.SesionEntrenamiento;
-import server.clases.TipoUsuario;
-import server.clases.Usuario;
 import server.dao.UsuarioDAO;
+import server.domain.Reto;
+import server.domain.SesionEntrenamiento;
+import server.domain.TipoUsuario;
+import server.domain.Usuario;
 import server.dto.RetoDTO;
 import server.dto.SesionDTO;
 import server.gateway.LoginGateway;

@@ -1,4 +1,4 @@
-package server.clases;
+package server.domain;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,14 +20,12 @@ public class Usuario {
 	private int altura;
 	private int frecuencia_maxima;
 	private int frecuencia_reposo;
-	@Persistent(defaultFetchGroup="true")
 	private TipoUsuario tipoUsuario;
-	@Join
-    @Persistent(mappedBy = "creador", dependentElement = "true", defaultFetchGroup = "true")   // TODO
+	
+    @Persistent(defaultFetchGroup = "true")   // TODO
     private List<SesionEntrenamiento> listaSesiones;
 
-    @Join
-    @Persistent(mappedBy = "participantes", dependentElement = "true", defaultFetchGroup = "true")   // TODO
+    @Persistent(defaultFetchGroup = "true")  
     private List<Reto> retosAceptados;
 
 	

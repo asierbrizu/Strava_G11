@@ -8,7 +8,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-import server.clases.Usuario;
+import server.domain.Usuario;
 
 //This class implements Singleton and DAO patterns
 public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObject<Usuario> {
